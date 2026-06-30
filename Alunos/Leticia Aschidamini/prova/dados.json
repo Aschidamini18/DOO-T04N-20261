@@ -1,0 +1,90 @@
+{
+  "nome" : "Leticia",
+  "favoritos" : [ {
+    "id" : 169,
+    "nome" : "Breaking Bad",
+    "status" : "Ended",
+    "dataEstreia" : "2008-01-20",
+    "dataFim" : "2019-10-11",
+    "nota" : 9.2,
+    "emissora" : "AMC",
+    "generos" : "Drama, Crime, Thriller",
+    "sumario" : "Breaking Bad follows protagonist Walter White, a chemistry teacher who lives in New Mexico with his wife and teenage son who has cerebral palsy. White is diagnosed with Stage III cancer and given a prognosis of two years left to live. With a new sense of fearlessness based on his medical prognosis, and a desire to secure his family's financial security, White chooses to enter a dangerous world of drugs and crime and ascends to power in this world. The series explores how a fatal diagnosis such as White's releases a typical man from the daily concerns and constraints of normal society and follows his transformation from mild family man to a kingpin of the drug trade.",
+    "idioma" : "English",
+    "imagemUrl" : "https://static.tvmaze.com/uploads/images/original_untouched/501/1253519.jpg"
+  }, {
+    "id" : 34653,
+    "nome" : "All American",
+    "status" : "Running",
+    "dataEstreia" : "2018-10-10",
+    "dataFim" : "N/A",
+    "nota" : 6.2,
+    "emissora" : "The CW",
+    "generos" : "Drama, Sports",
+    "sumario" : "When a rising high school football player from South Central L.A. is recruited to play for Beverly Hills High, the wins, losses and struggles of two families from vastly different worlds — Compton and Beverly Hills — begin to collide. Inspired by the life of pro football player Spencer Paysinger.",
+    "idioma" : "English",
+    "imagemUrl" : "https://static.tvmaze.com/uploads/images/original_untouched/564/1411813.jpg"
+  }, {
+    "id" : 45786,
+    "nome" : "Young Rock",
+    "status" : "Ended",
+    "dataEstreia" : "2021-02-16",
+    "dataFim" : "2023-02-24",
+    "nota" : 4.2,
+    "emissora" : "NBC",
+    "generos" : "Comedy, Family, Sports",
+    "sumario" : "Every legend has a beginning. Dwayne \"The Rock\" Johnson stars in a larger-than-life family comedy based on outrageous stories of his youth. This coming-of-age journey highlights the unforgettable moments and incredible relationships that took Dwayne from ordinary kid to extraordinary superstar - revealing he's more like us than we know.",
+    "idioma" : "English",
+    "imagemUrl" : "https://static.tvmaze.com/uploads/images/original_untouched/427/1068374.jpg"
+  } ],
+  "assistidos" : [ {
+    "id" : 169,
+    "nome" : "Breaking Bad",
+    "status" : "Ended",
+    "dataEstreia" : "2008-01-20",
+    "dataFim" : "2019-10-11",
+    "nota" : 9.2,
+    "emissora" : "AMC",
+    "generos" : "Drama, Crime, Thriller",
+    "sumario" : "Breaking Bad follows protagonist Walter White, a chemistry teacher who lives in New Mexico with his wife and teenage son who has cerebral palsy. White is diagnosed with Stage III cancer and given a prognosis of two years left to live. With a new sense of fearlessness based on his medical prognosis, and a desire to secure his family's financial security, White chooses to enter a dangerous world of drugs and crime and ascends to power in this world. The series explores how a fatal diagnosis such as White's releases a typical man from the daily concerns and constraints of normal society and follows his transformation from mild family man to a kingpin of the drug trade.",
+    "idioma" : "English",
+    "imagemUrl" : "https://static.tvmaze.com/uploads/images/original_untouched/501/1253519.jpg"
+  }, {
+    "id" : 34653,
+    "nome" : "All American",
+    "status" : "Running",
+    "dataEstreia" : "2018-10-10",
+    "dataFim" : "N/A",
+    "nota" : 6.2,
+    "emissora" : "The CW",
+    "generos" : "Drama, Sports",
+    "sumario" : "When a rising high school football player from South Central L.A. is recruited to play for Beverly Hills High, the wins, losses and struggles of two families from vastly different worlds — Compton and Beverly Hills — begin to collide. Inspired by the life of pro football player Spencer Paysinger.",
+    "idioma" : "English",
+    "imagemUrl" : "https://static.tvmaze.com/uploads/images/original_untouched/564/1411813.jpg"
+  } ],
+  "queroAssistir" : [ {
+    "id" : 169,
+    "nome" : "Breaking Bad",
+    "status" : "Ended",
+    "dataEstreia" : "2008-01-20",
+    "dataFim" : "2019-10-11",
+    "nota" : 9.2,
+    "emissora" : "AMC",
+    "generos" : "Drama, Crime, Thriller",
+    "sumario" : "Breaking Bad follows protagonist Walter White, a chemistry teacher who lives in New Mexico with his wife and teenage son who has cerebral palsy. White is diagnosed with Stage III cancer and given a prognosis of two years left to live. With a new sense of fearlessness based on his medical prognosis, and a desire to secure his family's financial security, White chooses to enter a dangerous world of drugs and crime and ascends to power in this world. The series explores how a fatal diagnosis such as White's releases a typical man from the daily concerns and constraints of normal society and follows his transformation from mild family man to a kingpin of the drug trade.",
+    "idioma" : "English",
+    "imagemUrl" : "https://static.tvmaze.com/uploads/images/original_untouched/501/1253519.jpg"
+  }, {
+    "id" : 34653,
+    "nome" : "All American",
+    "status" : "Running",
+    "dataEstreia" : "2018-10-10",
+    "dataFim" : "N/A",
+    "nota" : 6.2,
+    "emissora" : "The CW",
+    "generos" : "Drama, Sports",
+    "sumario" : "When a rising high school football player from South Central L.A. is recruited to play for Beverly Hills High, the wins, losses and struggles of two families from vastly different worlds — Compton and Beverly Hills — begin to collide. Inspired by the life of pro football player Spencer Paysinger.",
+    "idioma" : "English",
+    "imagemUrl" : "https://static.tvmaze.com/uploads/images/original_untouched/564/1411813.jpg"
+  } ]
+}
