@@ -7,7 +7,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-// a janela principal rosa e fofa (✿ ♥‿♥)
+// a janela principal rosa
 public class TelaPrincipal extends JFrame {
 
     private GerenciadorDados gerenciador;
@@ -29,16 +29,16 @@ public class TelaPrincipal extends JFrame {
         usuario = gerenciador.carregarUsuario();
         apiClient = new TVMazeAPICliente();
 
-        // titulo com seu nome! ✨
+        // titulo com o nome
         setTitle("✨ Minhas Séries 📺 - Usuária: " + usuario.getApelido() + " (" + usuario.getNome() + ") ✨");
         setSize(1050, 750);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         
-        // fundo principal rosa (🌸)
+        // fundo principal rosa 
         getContentPane().setBackground(new Color(255, 228, 242));
 
-        // salva ao clicar no X (❌)
+        // salva ao clicar no X 
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -58,7 +58,7 @@ public class TelaPrincipal extends JFrame {
         add(abas);
     }
 
-    // monta a area de pesquisar 🔎
+    // monta a area de pesquisar 
     private JPanel montarAbaBusca() {
         JPanel painelBusca = new JPanel(new BorderLayout());
         painelBusca.setBackground(new Color(255, 240, 245));
@@ -85,7 +85,7 @@ public class TelaPrincipal extends JFrame {
         painelInfoCentral.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         painelInfoCentral.setBackground(new Color(255, 240, 245));
         
-        // onde vai a imagem 🖼️
+        // onde vai a imagem 
         lblPoster = new JLabel("Sem fotinha (╥﹏╥)", SwingConstants.CENTER);
         lblPoster.setPreferredSize(new Dimension(210, 295));
         lblPoster.setBorder(BorderFactory.createLineBorder(new Color(255, 105, 180), 2)); // borda pink
@@ -98,7 +98,7 @@ public class TelaPrincipal extends JFrame {
         painelInfoCentral.add(lblPoster, BorderLayout.WEST);
         painelInfoCentral.add(new JScrollPane(txtDetalhes), BorderLayout.CENTER);
         
-        // botoes fofos em baixo 🎀
+        // botoes fofos em baixo 
         JPanel painelBotoes = new JPanel(new GridLayout(1, 3, 5, 5));
         painelBotoes.setBackground(new Color(255, 240, 245));
         btnFavoritos = new JButton("Favoritos (💖)");
@@ -125,7 +125,7 @@ public class TelaPrincipal extends JFrame {
         painelBusca.add(painelTopo, BorderLayout.NORTH);
         painelBusca.add(splitPane, BorderLayout.CENTER);
 
-        // acoes! 🎬
+        // acoes
         btnBuscar.addActionListener(e -> buscarSerie());
         
         listBusca.addListSelectionListener(e -> {
@@ -283,7 +283,7 @@ public class TelaPrincipal extends JFrame {
         btnDesejaAssistir.setEnabled(ativo);
     }
 
-    // vai la na net buscar (🚀)
+// vai la na net buscar (🚀)
     private void buscarSerie() {
         String termo = txtBusca.getText().trim();
         if (termo.isEmpty()) return;
@@ -298,16 +298,27 @@ public class TelaPrincipal extends JFrame {
 
         SwingWorker<List<Serie>, Void> worker = new SwingWorker<>() {
             @Override
-            protected List<Serie> doInBackground() {
+            protected List<Serie> doInBackground() throws Exception { // Adicionado 'throws Exception'
+                // Se der erro de rede, a exceção vem direto pra cá
                 return apiClient.buscarSeriePorNome(termo);
             }
+            
             @Override
             protected void done() {
                 try {
-                    List<Serie> resultados = get();
+                    // O .get() vai disparar a exceção capturada no doInBackground
+                    List<Serie> resultados = get(); 
                     for (Serie s : resultados) listModelBusca.addElement(s);
+                    
+                    if(resultados.isEmpty()) {
+                        JOptionPane.showMessageDialog(TelaPrincipal.this, "Nenhuma série encontrada com esse nome! (╥_╥)", "Poxa vida...", JOptionPane.INFORMATION_MESSAGE);
+                    }
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(TelaPrincipal.this, "Erro: " + ex.getMessage());
+                    // Pop-up na tela com o erro de rede! 🛑
+                    JOptionPane.showMessageDialog(TelaPrincipal.this, 
+                        "Vish, deu erro na rede! (╥﹏╥)\nVerifique sua internet ou tente novamente mais tarde.\nDetalhe técnico: " + ex.getCause().getMessage(), 
+                        "Erro de Conexão 🔌", 
+                        JOptionPane.ERROR_MESSAGE);
                 } finally {
                     btnBuscar.setEnabled(true);
                     btnBuscar.setText("Buscar API (≧◡≦)");
@@ -316,4 +327,4 @@ public class TelaPrincipal extends JFrame {
         };
         worker.execute();
     }
-}
+ }

@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-// guarda os dados de cada serie 📺
+// guarda os dados de cada serie 
 public class Serie {
     
     private String name;
@@ -16,7 +16,7 @@ public class Serie {
 
     public Serie() {}
 
-    // getters e setters para acessar tudo em seguranca (🔒)
+    // getters e setters para acessar tudo em seguranca 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
 
@@ -44,7 +44,7 @@ public class Serie {
     public String getImageUrl() { return imageUrl; }
     public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
     
-    // mostra o nome bonitinho na tela (✨)
+    // mostra o nome bonitinho na tela 
     @Override
     public String toString() {
         return this.name;
