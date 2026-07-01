@@ -27,7 +27,7 @@ public class GerenciadorDados {
         }
     }
 
-    // monta as listas bonitinhas no formato json 
+    // monta as listas no formato json 
     private void escreverLista(BufferedWriter writer, String nomeLista, List<Serie> lista) throws IOException {
         writer.write("  \"" + nomeLista + "\": [\n");
         for (int i = 0; i < lista.size(); i++) {
