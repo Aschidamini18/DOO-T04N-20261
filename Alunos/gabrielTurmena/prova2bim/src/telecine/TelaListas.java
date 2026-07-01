@@ -4,8 +4,10 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Comparator;
 
-public class TelaListas extends JFrame {
+public class TelasListas extends JFrame {
 
     private Usuario usuario;
     private UsuarioRepositorio usuarioRepositorio;
@@ -13,9 +15,12 @@ public class TelaListas extends JFrame {
     private JTable tabelaListas;
     private JButton botaoRemover;
     private DefaultTableModel modeloTabela;
+    //filtragem pelo que o professor pediu
+    private JComboBox<String> comboOrdenacao;
+    private List<Serie> listaExibida;
     
 
-    public TelaListas(Usuario usuario, UsuarioRepositorio usuarioRepositorio) {
+    public TelasListas(Usuario usuario, UsuarioRepositorio usuarioRepositorio) {
         this.usuario = usuario;
         this.usuarioRepositorio = usuarioRepositorio;
 
@@ -36,11 +41,23 @@ public class TelaListas extends JFrame {
         comboLista = new JComboBox<>(new String[]{
                 "Favoritas",
                 "Assistidas",
-                "Quero assistir"
+                "Assistir Mais Tarde"
         });
-
+        //ordenar
+        comboOrdenacao = new JComboBox<>(new String[]{
+                "Ordem alfabética",
+                "Nota geral",
+                "Estado",
+                "Data de estreia"
+        });
+        //listas comnbobox
         painelTopo.add(new JLabel("Escolha a lista:"));
         botaoRemover = new JButton("Remover da lista");
+        //ordenação
+        painelTopo.add(new JLabel("Ordenar por:"));
+        
+        //adicionando ao painel
+        painelTopo.add(comboOrdenacao);
         painelTopo.add(comboLista);
         painelTopo.add(botaoRemover);
 
@@ -65,16 +82,50 @@ public class TelaListas extends JFrame {
 
     private void configurarEventos() {
         comboLista.addActionListener(e -> carregarLista());
-        
+        comboOrdenacao.addActionListener(e -> carregarLista());
         botaoRemover.addActionListener(e -> removerSerieSelecionada());
+    }
+    
+    private void ordenarLista(List<Serie> lista) {
+        String ordenacao = comboOrdenacao.getSelectedItem().toString();
+
+        if (ordenacao.equals("Ordem alfabética")) {
+            lista.sort(Comparator.comparing(
+                    Serie::getNome,
+                    Comparator.nullsLast(String::compareToIgnoreCase)
+            ));
+        }
+
+        if (ordenacao.equals("Nota geral")) {
+            lista.sort(Comparator.comparing(
+                    Serie::getNotaGeral,
+                    Comparator.nullsLast(Double::compareTo)
+            ).reversed());
+        }
+
+        if (ordenacao.equals("Estado")) {
+            lista.sort(Comparator.comparing(
+                    Serie::getEstado,
+                    Comparator.nullsLast(String::compareToIgnoreCase)
+            ));
+        }
+
+        if (ordenacao.equals("Data de estreia")) {
+            lista.sort(Comparator.comparing(
+                    Serie::getDataEstreia,
+                    Comparator.nullsLast(String::compareTo)
+            ));
+        }
     }
 
     private void carregarLista() {
-        List<Serie> lista = buscarListaSelecionada();
+        listaExibida = new ArrayList<>(buscarListaSelecionada());
+
+        ordenarLista(listaExibida);
 
         modeloTabela.setRowCount(0);
 
-        for (Serie serie : lista) {
+        for (Serie serie : listaExibida) {
             modeloTabela.addRow(new Object[]{
                     serie.getNome(),
                     serie.getIdioma(),
@@ -112,7 +163,7 @@ public class TelaListas extends JFrame {
 
         List<Serie> lista = buscarListaSelecionada();
 
-        Serie serieSelecionada = lista.get(linhaSelecionada);
+        Serie serieSelecionada = listaExibida.get(linhaSelecionada);
 
         int confirmacao = JOptionPane.showConfirmDialog(
                 this,

@@ -1,13 +1,13 @@
 package telecine;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 //recebe usuário, converte para JSON os dados dele, abre e cria o arquivos de JSON que vai receber os dados
 //escreve no arquivo e fecha o arquivo (no caso manipula ela pelo gson)
@@ -18,14 +18,15 @@ public class UsuarioRepositorio {
 
     public void salvar(Usuario usuario) throws IOException {
         Gson gson = new GsonBuilder()
-                .setPrettyPrinting() //cria o objeto json formata ele separado e o .create é pra executar
+                .setPrettyPrinting()
                 .create();
-        //teste pra saber aonde ta
-        Path caminho = Path.of(CAMINHO_ARQUIVO);
-        //escrevendo em arquivo
-        try (Writer writer = Files.newBufferedWriter(Path.of(CAMINHO_ARQUIVO), StandardCharsets.UTF_8)) {
+
+        Path caminho = Paths.get(CAMINHO_ARQUIVO);
+
+        try (Writer writer = Files.newBufferedWriter(caminho, StandardCharsets.UTF_8)) {
             gson.toJson(usuario, writer);
         }
+
         System.out.println("Arquivo salvo em: " + caminho.toAbsolutePath());
     }
 
@@ -34,7 +35,7 @@ public class UsuarioRepositorio {
                 .setPrettyPrinting()
                 .create();
 
-        Path caminho = Path.of(CAMINHO_ARQUIVO);
+        Path caminho = Paths.get(CAMINHO_ARQUIVO);
 
         if (!Files.exists(caminho)) {
             return new Usuario("Arthur");
