@@ -7,7 +7,7 @@ import java.util.List;
 
 public class TelaPrincipal extends JFrame {
 
-	//declarando as variáveis Java do código em si que vão receber valores
+	//declarando as variáveis Java do código em si que vão receber valores (os botões e a tabela e as variáveis que herdam dos metodos)
     private JTextField campoPesquisa;
     private JButton botaoPesquisar;
     private JButton botaoFavoritar;
@@ -93,7 +93,7 @@ public class TelaPrincipal extends JFrame {
     	
     	
     	botaoVerListas.addActionListener(e -> {
-    		TelaListas telaListas = new TelaListas(usuario, usuarioRepositorio);
+    		TelasListas telaListas = new TelasListas(usuario, usuarioRepositorio);
     	    telaListas.setVisible(true);
     	});
     	
